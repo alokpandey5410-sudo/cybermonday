@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="neon">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CyberCart 2026 – Cyber Monday Mega Sale</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&family=Orbitron:wght@700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B12;--card:#171A2B;--ac:#8B5CF6;--ac2:#22D3EE;--bd:#FF3D81;--tx:#F8FAFC;--mut:#94A3B8;--glow:0 0 18px color-mix(in srgb,var(--ac) 55%,transparent);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+[data-theme=light]{--bg:#F8FAFC;--card:#FFFFFF;--ac:#2563EB;--ac2:#F97316;--bd:#F97316;--tx:#1E293B;--mut:#64748B;--glow:0 4px 14px rgba(0,0,0,.12)}
+[data-theme=gold]{--bg:#111111;--card:#202020;--ac:#D4AF37;--ac2:#D4AF37;--bd:#E63946;--tx:#F5F5F5;--mut:#A8A29E;--glow:0 0 14px rgba(212,175,55,.4)}
+[data-theme=ocean]{--bg:#06141F;--card:#0D2538;--ac:#0EA5E9;--ac2:#2DD4BF;--bd:#F59E0B;--tx:#E0F2FE;--mut:#7DD3FC;--glow:0 0 16px rgba(14,165,233,.45)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Inter,system-ui,sans-serif;transition:background .3s,color .3s}
+h1,h2,h3{font-family:Poppins,sans-serif;margin:0}
+button{font-family:Poppins,sans-serif;font-weight:500;cursor:pointer;border:0;border-radius:10px;padding:9px 14px;background:var(--ac);color:#fff;transition:transform .15s,box-shadow .15s}
+button:hover{transform:translateY(-1px);box-shadow:var(--glow)}button:disabled{opacity:.6}
+button.ghost{background:transparent;color:var(--tx);border:1px solid var(--ac)}
+button.ghost.on{background:var(--ac);color:#fff}
+nav{display:flex;align-items:center;gap:8px;padding:14px 5vw;flex-wrap:wrap;border-bottom:1px solid color-mix(in srgb,var(--ac) 30%,transparent)}
+.logo{font-family:Poppins;font-weight:700;font-size:22px;color:var(--ac2);margin-right:auto}
+nav button{padding:8px 11px;font-size:13px}
+input,select{background:var(--card);color:var(--tx);border:1px solid color-mix(in srgb,var(--ac) 50%,transparent);border-radius:10px;padding:9px 12px;font:inherit;max-width:100%}
+.hero{margin:20px 5vw 10px;padding:36px 6vw;border-radius:22px;background:linear-gradient(120deg,var(--ac),var(--bd));color:#fff;box-shadow:var(--glow);text-align:center}
+.hero h1{font-size:clamp(26px,5vw,48px)}.hero p{margin:8px 0 16px}
+.pct{font-family:Montserrat;font-weight:700;font-size:clamp(30px,6vw,56px)}
+#timer{font-family:Orbitron;font-size:clamp(20px,4vw,32px);letter-spacing:2px;margin:10px 0}
+.hero button{background:#fff;color:#111;font-weight:700}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:6px 5vw 10px}
+.chip{white-space:nowrap;background:var(--card);border:1px solid var(--ac);border-radius:999px;padding:7px 14px;font-size:13px;cursor:pointer}
+.bar{display:flex;gap:8px;flex-wrap:wrap;padding:0 5vw;align-items:center}.bar .sp{flex:1}
+h2.sec{padding:22px 5vw 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;padding:8px 5vw 30px}
+.card{background:var(--card);border-radius:18px;padding:16px;position:relative;border:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.card:hover{border-color:var(--ac);box-shadow:var(--glow)}
+.em{font-size:56px;text-align:center;margin:8px 0}
+.name{font-weight:600}.cat{color:var(--mut);font-size:12px}
+.price{font-family:Montserrat;font-weight:700;font-size:20px}.old{text-decoration:line-through;color:var(--mut);font-size:13px;margin-left:6px}
+.badge{position:absolute;top:12px;left:12px;background:var(--bd);color:#fff;border-radius:8px;padding:3px 8px;font:700 12px Montserrat}
+.heart{position:absolute;top:8px;right:8px;background:transparent;font-size:20px;padding:4px 8px;color:var(--mut)}.heart.on{color:var(--bd)}
+.best{color:var(--ac2);font-size:12px;font-weight:600}
+.row{display:flex;gap:8px;margin-top:8px}.row button{flex:1;font-size:12px}
+#drawer{position:fixed;top:0;right:0;bottom:0;width:min(390px,100%);background:var(--card);padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(105%);transition:transform .3s;z-index:20;overflow:auto;box-shadow:-8px 0 30px rgba(0,0,0,.35)}
+#drawer.open{transform:none}
+.line{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--mut) 25%,transparent)}
+.line .t{flex:1;font-size:14px}.qty{display:flex;align-items:center;gap:6px}.qty button{padding:2px 9px}
+.sum div{display:flex;justify-content:space-between;margin:6px 0;font-size:14px}.sum .tot{font:700 20px Montserrat;color:var(--ac2)}
+.msg{font-size:13px;min-height:18px;margin:6px 0}.ok{color:#22C55E}.err{color:var(--bd)}
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:30;padding:16px}
+#modal.open{display:flex}
+.box{background:var(--card);border-radius:20px;padding:22px;max-width:460px;width:100%;max-height:90vh;overflow:auto}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.pay button{font-size:13px}
+.apps{display:flex;gap:6px;flex-wrap:wrap}.box input,.box select{width:100%;margin-top:8px}
+.empty{color:var(--mut);padding:20px 0;text-align:center}
+.offer{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--mut) 25%,transparent);font-size:14px}
+.offer span{flex:1}.offer b{color:var(--ac2)}.offer button{padding:5px 10px;font-size:12px}
+.wrap{position:relative;width:240px;height:260px;margin:10px auto}
+.ptr{position:absolute;top:-6px;left:50%;margin-left:-10px;font-size:22px;color:var(--bd);z-index:2}
+.wheel{position:absolute;top:16px;left:0;width:240px;height:240px;border-radius:50%;border:4px solid var(--tx);transition:transform 4s cubic-bezier(.17,.67,.2,1);
+background:conic-gradient(var(--ac) 0 60deg,var(--bd) 60deg 120deg,#0E9F6E 120deg 180deg,var(--ac) 180deg 240deg,var(--bd) 240deg 300deg,#475569 300deg 360deg)}
+.wheel span{position:absolute;left:50%;top:50%;width:90px;height:18px;margin:-9px 0 0 -45px;text-align:center;font:700 11px/18px Poppins;color:#fff}
+.tl{display:flex;justify-content:space-between;margin:10px 0 4px;position:relative}
+.tl div{flex:1;text-align:center;font-size:10px;color:var(--mut)}.tl div i{display:block;width:14px;height:14px;border-radius:50%;background:var(--mut);margin:0 auto 4px}
+.tl div.d{color:var(--tx)}.tl div.d i{background:#22C55E}
+.ord{padding:12px 0;border-bottom:1px solid color-mix(in srgb,var(--mut) 25%,transparent);font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:7px 4px;border-bottom:1px solid color-mix(in srgb,var(--mut) 25%,transparent);text-align:center}td:first-child{text-align:left;color:var(--mut)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ac);color:#fff;padding:10px 18px;border-radius:999px;z-index:40;display:none;font-size:14px;max-width:90%}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:20px}
+.sub{display:flex;gap:6px;overflow-x:auto;padding:8px 5vw;font-size:13px}.sub a{color:var(--tx);text-decoration:none;white-space:nowrap;padding:5px 12px;border-radius:999px;border:1px solid color-mix(in srgb,var(--ac) 40%,transparent)}.sub a:hover{background:var(--ac);color:#fff}
+.panel{background:var(--card);border-radius:18px;padding:16px;margin:0 5vw 16px}
+progress{accent-color:var(--ac2);height:8px}
+#flash{background:linear-gradient(135deg,color-mix(in srgb,var(--bd) 28%,var(--card)),var(--card));margin-top:6px}
+.fhead{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px}.fcd{font-family:Orbitron;font-size:24px;color:var(--bd)}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}.fcard{display:flex;gap:10px;align-items:center;background:var(--bg);border-radius:14px;padding:12px}
+#vault{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;padding:0 5vw 24px}
+.cpn{background:var(--card);border:2px dashed var(--ac);border-radius:14px;padding:14px}.cpn b{font:700 20px Orbitron;color:var(--ac2)}
+.rvgrid{display:grid;grid-template-columns:1fr 1.4fr;gap:20px}@media(max-width:700px){.rvgrid{grid-template-columns:1fr}}
+.rvgrid input,.rvgrid select{width:100%;margin-top:8px}.avg{font:700 40px Montserrat}.avg small{font-size:16px;color:var(--mut)}
+.rrow{display:flex;gap:8px;align-items:center;font-size:12px}.rrow progress{flex:1}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;padding:0 5vw 12px}.kpi{background:var(--card);border-radius:16px;padding:14px}.kpi b{font:700 22px Montserrat;display:block;color:var(--ac2)}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;padding:0 5vw 24px}.dgrid .panel{margin:0}
+.bars{display:flex;gap:8px;margin-top:10px}.col{display:flex;flex-direction:column;align-items:center;flex:1;gap:4px}
+.col u{display:flex;align-items:flex-end;height:120px;width:100%;text-decoration:none}.col u i{width:100%;display:block;background:linear-gradient(var(--ac2),var(--ac));border-radius:6px 6px 0 0;min-height:3px}
+.donut{width:130px;height:130px;border-radius:50%;margin:12px auto;position:relative}.donut:after{content:'';position:absolute;inset:28px;border-radius:50%;background:var(--card)}
+.hb{margin:8px 0;font-size:13px}.hb div{height:8px;border-radius:6px;background:var(--ac);margin-top:3px}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">⚡ CyberCart 2026</div>
+  <input id="q" placeholder="Search products…" oninput="S.q=this.value;render()" style="width:170px">
+  <button class="ghost" onclick="offers()">🎁 Offers</button>
+  <button class="ghost" onclick="wheel()">🎡 Spin</button>
+  <button class="ghost" onclick="showOrders()">📦 Orders</button>
+  <button class="ghost" onclick="compare()">⚖ Compare (<span id="cmc">0</span>)</button>
+  <select onchange="theme(this.value)" id="thsel" aria-label="Theme">
+    <option value="neon">🎨 Cyber Neon</option><option value="light">Light</option><option value="gold">Luxury Gold</option><option value="ocean">Ocean Blue</option>
+  </select>
+  <button onclick="openCart(true)">🛒 Cart (<span id="cc">0</span>)</button>
+</nav>
+<div class="sub"><a href="#flash">⚡ Flash Sale</a><a href="#grid">🛍 Products</a><a href="#coupons">🎟 Coupons</a><a href="#reviews-h">⭐ Reviews</a><a href="#track">📦 Track Order</a><a href="#dashboard">📊 Dashboard</a><a href="#" id="addrpill" onclick="addrForm(false);return false">📍 Add address</a></div>
+
+<section class="hero">
+  <h1>CYBER MONDAY MEGA SALE</h1>
+  <div class="pct">UP TO <span id="pct">0</span>% OFF</div>
+  <div>Sale ends in</div><div id="timer">--:--:--</div>
+  <p>Code <b>CYBER20</b> = extra 20% off • Free delivery above ₹999</p>
+  <button onclick="document.getElementById('grid').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+</section>
+<div class="chips">
+  <span class="chip" onclick="offers()">⚡ Flash: Power Bank 35% off</span>
+  <span class="chip" onclick="offers()">🎮 Buy 2 Gaming items → extra 10% off</span>
+  <span class="chip" onclick="offers()">🎟 FIRST200: ₹200 off above ₹1,999</span>
+  <span class="chip" onclick="offers()">🚚 Free delivery above ₹999</span>
+  <span class="chip" onclick="wheel()">🎡 Spin to win a coupon</span>
+</div>
+
+<div class="panel" id="flash"></div>
+<div class="bar">
+  <span id="cats"></span><span class="sp"></span>
+  <select id="sort" onchange="S.sort=this.value;render()">
+    <option value="best">Best sellers</option><option value="lh">Price: low to high</option>
+    <option value="hl">Price: high to low</option><option value="rate">Top rated</option><option value="disc">Biggest discount</option>
+  </select>
+</div>
+<h2 class="sec">Trending deals</h2>
+<div class="grid" id="grid"></div>
+
+<h2 class="sec" id="coupons">🎟 Coupon Vault</h2><div id="vault"></div>
+<h2 class="sec" id="reviews-h">⭐ Customer reviews</h2><div id="reviews"></div>
+<h2 class="sec" id="track">📦 Track your order</h2>
+<div class="panel"><div style="display:flex;gap:8px"><input id="tid" placeholder="Enter order ID (demo: CC10000001)" style="flex:1;min-width:0"><button onclick="trackOrder()">Track</button></div><div id="tres" style="margin-top:10px"></div></div>
+<h2 class="sec" id="dashboard">📊 Sales dashboard</h2>
+<p class="cat" style="padding:0 5vw;margin:0 0 10px">Sample sales data combined with the orders you place in this browser.</p>
+<div class="kpis" id="kpis"></div><div class="dgrid" id="dgrid"></div>
+<aside id="drawer">
+  <div style="display:flex;justify-content:space-between;align-items:center"><h3>Your cart</h3><button class="ghost" onclick="openCart(false)">✕</button></div>
+  <div id="lines"></div>
+  <div style="display:flex;gap:8px;margin-top:12px"><input id="cpn" placeholder="Coupon code" style="flex:1;min-width:0"><button onclick="applyCoupon()">Apply</button></div>
+  <div class="msg" id="cmsg"></div>
+  <label style="font-size:13px;display:block;margin-bottom:8px"><input type="checkbox" id="usep" onchange="S.use=this.checked;render()"> Use loyalty points (<span id="pts">0</span> available, 1 pt = ₹1)</label>
+  <div class="sum" id="sum"></div>
+  <button style="width:100%;margin-top:10px" onclick="openPay()">Proceed to checkout</button>
+  <button class="ghost" style="width:100%;margin-top:8px" onclick="S.cart={};S.coupon='';cpn.value='';render()">Clear cart</button>
+</aside>
+
+<div id="modal"><div class="box" id="mbox"></div></div>
+<div class="toast" id="toast"></div>
+<footer>Demo project • Sample prices and offers • Payments are simulated, no real money or card data is processed</footer>
+
+<script>
+const P=[
+ {id:1,n:'Wireless Headphones',c:'Electronics',p:2499,d:20,r:4.5,s:120,e:'🎧'},
+ {id:2,n:'Smart Watch',c:'Electronics',p:3499,d:20,r:4.3,s:95,e:'⌚'},
+ {id:3,n:'Bluetooth Speaker',c:'Electronics',p:1499,d:20,r:4.4,s:80,e:'🔊'},
+ {id:4,n:'Gaming Keyboard',c:'Gaming',p:1999,d:15,r:4.6,s:70,e:'⌨️'},
+ {id:5,n:'Gaming Mouse',c:'Gaming',p:999,d:15,r:4.2,s:65,e:'🖱️'},
+ {id:6,n:'Running Sneakers',c:'Fashion',p:2999,d:30,r:4.1,s:55,e:'👟'},
+ {id:7,n:'Hoodie',c:'Fashion',p:1299,d:30,r:4.0,s:40,e:'🧥'},
+ {id:8,n:'Air Fryer',c:'Home',p:4999,d:25,r:4.7,s:30,e:'🍟'},
+ {id:9,n:'Desk Lamp',c:'Home',p:899,d:35,r:4.2,s:28,e:'💡',f:1},
+ {id:10,n:'Power Bank',c:'Electronics',p:1299,d:35,r:4.4,s:90,e:'🔋',f:1}
+];
+const COUPONS={
+ CYBER20:{t:'pct',v:20,min:500,max:1000,lim:3,exp:'2026-12-31',d:'20% off (max ₹1,000), min ₹500'},
+ FIRST200:{t:'flat',v:200,min:1999,lim:1,exp:'2026-12-31',d:'₹200 off orders above ₹1,999 (first order)'},
+ ELEC15:{t:'pct',v:15,min:1000,max:800,cat:'Electronics',lim:5,exp:'2026-12-31',d:'15% off Electronics (max ₹800), min ₹1,000'},
+ FLASH50:{t:'flat',v:50,min:300,lim:2,exp:'2026-12-31',d:'₹50 off orders above ₹300'},
+ OLD50:{t:'flat',v:50,min:0,exp:'2026-10-01',d:'Expired demo coupon'},
+ SPIN5:{t:'pct',v:5,min:0,max:300,spin:1,d:'Spin prize: 5% off'},
+ SPIN10:{t:'pct',v:10,min:500,max:500,spin:1,d:'Spin prize: 10% off'},
+ SPIN100:{t:'flat',v:100,min:999,spin:1,d:'Spin prize: ₹100 off above ₹999'},
+ FREEDEL:{t:'del',min:0,spin:1,d:'Spin prize: free delivery'}
+};
+const PRIZES=[{l:'5% OFF',c:'SPIN5'},{l:'₹100 OFF',c:'SPIN100'},{l:'FREE DELIVERY',c:'FREEDEL'},{l:'50 POINTS',pts:50},{l:'10% OFF',c:'SPIN10'},{l:'TRY AGAIN'}];
+const REV=[['Aarav','Great value for the sale price!',5],['Meera','Good quality, fast delivery.',4],['Rohan','Works as described.',4]];
+const CATS=['All','Electronics','Fashion','Gaming','Home'];
+const BANKS=['State Bank of India','HDFC Bank','ICICI Bank','Axis Bank','Kotak Mahindra Bank','Punjab National Bank'];
+const STAGES=['Placed','Processing','Shipped','Out for delivery','Delivered'], STAGE_AT=[0,10,30,60,90];
+const S={cart:{},wish:{},coupon:'',cat:'All',q:'',sort:'best',pts:100,wallet:5000,orders:[],unlocked:[],spun:'',alert:{},use:false,cmp:[],used:{},addr:null,fend:0,
+ reviews:[{pid:1,name:'Aarav',stars:5,text:'Great sound for the sale price!',date:'12 Oct',v:1},{pid:2,name:'Meera',stars:4,text:'Battery lasts days, strap is comfy.',date:'11 Oct',v:1},{pid:4,name:'Rohan',stars:5,text:'Keys feel great and the lighting is bright.',date:'10 Oct'},{pid:10,name:'Sneha',stars:4,text:'Charges my phone three times.',date:'9 Oct',v:1},{pid:8,name:'Vikram',stars:5,text:'Crispy snacks with much less oil!',date:'8 Oct'},{pid:6,name:'Isha',stars:3,text:'Nice look, runs slightly small.',date:'7 Oct'},{pid:3,name:'Kabir',stars:4,text:'Loud and clear for the price.',date:'6 Oct',v:1}]};
+let method='UPI',upiApp='GPay',ordT;
+const $=id=>document.getElementById(id), inr=n=>'₹'+Math.round(n).toLocaleString('en-IN'), sale=p=>p.p*(100-p.d)/100;
+try{const x=JSON.parse(localStorage.getItem('cybercart')||'{}');for(const k of ['cart','wish','coupon','pts','wallet','orders','unlocked','spun','alert','used','addr','fend','reviews'])if(x[k]!==undefined)S[k]=x[k];
+ if(x.theme){document.documentElement.dataset.theme=x.theme;$('thsel').value=x.theme}}catch(e){}
+function save(){try{const o={theme:document.documentElement.dataset.theme};for(const k of ['cart','wish','coupon','pts','wallet','orders','unlocked','spun','alert','used','addr','fend','reviews'])o[k]=S[k];localStorage.setItem('cybercart',JSON.stringify(o))}catch(e){}}
+function theme(t){document.documentElement.dataset.theme=t;save()}
+function toast(m){const t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',2600)}
+
+const end=new Date();end.setHours(23,59,59,0);
+setInterval(()=>{const s=Math.max(0,(end-new Date())/1000|0);$('timer').textContent=[s/3600|0,s/60%60|0,s%60].map(x=>String(x).padStart(2,'0')).join(':')},1000);
+let n=0;const an=setInterval(()=>{$('pct').textContent=++n;if(n>=35)clearInterval(an)},40);
+
+/* Calculation order: subtotal → sale discount → bundle → coupon → loyalty points → delivery (→ COD fee at payment) */
+function totals(){
+ let sub=0,sd=0,bun=0,gq=0;const catAfter={};
+ for(const id in S.cart){const p=P.find(x=>x.id==id),q=S.cart[id];sub+=p.p*q;sd+=p.p*q*p.d/100;catAfter[p.c]=(catAfter[p.c]||0)+sale(p)*q;if(p.c=='Gaming')gq+=q}
+ if(gq>=2)for(const id in S.cart){const p=P.find(x=>x.id==id);if(p.c=='Gaming')bun+=sale(p)*S.cart[id]*.10}
+ const after=sub-sd-bun;let cd=0,msg='',ok=false,fd=false;
+ if(S.coupon&&sub){const c=COUPONS[S.coupon];
+  if(!c)msg='Invalid coupon code';
+  else if(c.spin&&!S.unlocked.includes(S.coupon))msg='Spin the wheel to unlock this code';
+  else if(c.exp&&new Date(c.exp+'T23:59:59')<new Date())msg='Coupon expired on '+c.exp;
+  else if(c.lim&&(S.used[S.coupon]||0)>=c.lim)msg='Usage limit reached for '+S.coupon;
+  else if(after<c.min)msg='Add items worth '+inr(c.min)+' or more to use '+S.coupon;
+  else if(c.t=='del'){fd=true;ok=true;msg='Free delivery applied'}
+  else if(c.cat&&!catAfter[c.cat])msg='Add '+c.cat+' items to use '+S.coupon;
+  else{const base=c.cat?catAfter[c.cat]:after;cd=c.t=='pct'?base*c.v/100:c.v;if(c.max)cd=Math.min(cd,c.max);cd=Math.min(cd,base);msg='Coupon '+S.coupon+' applied: −'+inr(cd);ok=true}}
+ const pts=S.use?Math.min(S.pts,Math.floor(after-cd)):0;
+ const ac=after-cd-pts,del=!sub||fd||ac>=999?0:49;
+ return{sub,sd,bun,cd,pts,del,ac,saved:sd+bun+cd+pts,total:ac+del,msg,ok};
+}
+const fin=()=>totals().total+(method=='Cash on Delivery'&&Object.keys(S.cart).length?30:0);
+
+function render(){
+ $('cats').innerHTML=CATS.map(c=>`<button class="ghost ${S.cat==c?'on':''}" onclick="S.cat='${c}';render()">${c}</button>`).join(' ');
+ let l=P.filter(p=>(S.cat=='All'||p.c==S.cat)&&p.n.toLowerCase().includes(S.q.toLowerCase()));
+ l.sort({best:(a,b)=>b.s-a.s,lh:(a,b)=>sale(a)-sale(b),hl:(a,b)=>sale(b)-sale(a),rate:(a,b)=>b.r-a.r,disc:(a,b)=>b.d-a.d}[S.sort]);
+ const top=[...P].sort((a,b)=>b.s-a.s).slice(0,3).map(p=>p.id);
+ $('grid').innerHTML=l.map(p=>`<div class="card"><span class="badge">−${p.d}%</span>
+  <button class="heart ${S.wish[p.id]?'on':''}" onclick="wish(${p.id})" aria-label="Wishlist">${S.wish[p.id]?'♥':'♡'}</button>
+  <div class="em">${p.e}</div><div class="cat">${p.c}</div><div class="name">${p.n}</div>
+  <div>⭐ ${p.r} ${top.includes(p.id)?'<span class="best">• Best seller</span>':''}${p.f?'<span class="best">• ⚡ Flash deal</span>':''}${p.c=='Gaming'?'<span class="best">• Buy 2: −10%</span>':''}</div>
+  <div><span class="price">${inr(sale(p))}</span><span class="old">${inr(p.p)}</span></div>
+  <div class="row"><button onclick="add(${p.id})">Add to Cart</button><button class="ghost" onclick="quick(${p.id})">Quick View</button></div>
+  <div class="row"><button class="ghost ${S.cmp.includes(p.id)?'on':''}" onclick="cmp(${p.id})">⚖ Compare</button><button class="ghost ${S.alert[p.id]?'on':''}" onclick="alertP(${p.id})">🔔 Price alert</button></div></div>`).join('')||'<div class="empty">No products found</div>';
+ const ids=Object.keys(S.cart);
+ $('cc').textContent=ids.reduce((a,i)=>a+S.cart[i],0);$('cmc').textContent=S.cmp.length;
+ $('lines').innerHTML=ids.map(i=>{const p=P.find(x=>x.id==i);return`<div class="line"><span style="font-size:28px">${p.e}</span>
+  <div class="t">${p.n}<br><b>${inr(sale(p))}</b></div>
+  <div class="qty"><button onclick="chg(${i},-1)">−</button>${S.cart[i]}<button onclick="chg(${i},1)">+</button></div></div>`}).join('')||'<div class="empty">Your cart is empty</div>';
+ const t=totals();$('cmsg').textContent=t.msg;$('cmsg').className='msg '+(t.ok?'ok':'err');
+ $('pts').textContent=S.pts;$('usep').checked=S.use;
+ $('sum').innerHTML=`<div><span>Subtotal</span><span>${inr(t.sub)}</span></div><div><span>Sale discount</span><span>−${inr(t.sd)}</span></div>
+  ${t.bun?`<div><span>Bundle offer (Buy 2 Gaming)</span><span>−${inr(t.bun)}</span></div>`:''}
+  <div><span>Coupon</span><span>−${inr(t.cd)}</span></div>${t.pts?`<div><span>Loyalty points</span><span>−${inr(t.pts)}</span></div>`:''}
+  <div><span>Delivery</span><span>${t.del?inr(t.del):'FREE'}</span></div>
+  <div class="tot"><span>Total</span><span>${inr(t.total)}</span></div>${t.sub?`<div class="ok"><span>🎉 You saved</span><b>${inr(t.saved)}</b></div><div><span>Est. delivery</span><span>${eta()}</span></div>${t.ac<999?`<div style="display:block"><span class="cat">Add ${inr(999-t.ac)} more for FREE delivery</span><progress max="999" value="${t.ac}" style="width:100%"></progress></div>`:''}`:''}`;
+ flashR();dash();vault();pill();save();
+}
+function add(id){S.cart[id]=(S.cart[id]||0)+1;render();openCart(true)}
+function chg(id,d){S.cart[id]+=d;if(S.cart[id]<=0)delete S.cart[id];render()}
+function wish(id){S.wish[id]?delete S.wish[id]:S.wish[id]=1;render()}
+function alertP(id){const p=P.find(x=>x.id==id);if(S.alert[id]){delete S.alert[id];toast('Price alert removed')}else{S.alert[id]=1;toast('🔔 We will notify you if '+p.n+' drops below '+inr(sale(p)))}render()}
+function cmp(id){const i=S.cmp.indexOf(id);if(i>=0)S.cmp.splice(i,1);else if(S.cmp.length<3)S.cmp.push(id);else toast('You can compare up to 3 products');render()}
+function openCart(o){$('drawer').classList.toggle('open',o)}
+function applyCoupon(){S.coupon=$('cpn').value.trim().toUpperCase();render()}
+function setCoupon(c){S.coupon=c;$('cpn').value=c;render();closeM();openCart(true)}
+function modal(h){$('mbox').innerHTML=h;$('modal').classList.add('open')}
+function closeM(){$('modal').classList.remove('open');clearInterval(ordT)}
+$('modal').addEventListener('click',e=>{if(e.target.id=='modal')closeM()});
+
+function quick(id){const p=P.find(x=>x.id==id);
+ modal(`<div class="em">${p.e}</div><h3>${p.n}</h3><p class="cat">${p.c} • ⭐ ${p.r} • ${p.s} sold</p>
+ <p><span class="price">${inr(sale(p))}</span><span class="old">${inr(p.p)}</span> <span class="best">Save ${inr(p.p-sale(p))}</span></p>
+ <b>Customer reviews</b> <span class="cat">(sample)</span>${revList(p.id,3)}
+ <div class="row"><button onclick="add(${p.id});closeM()">Add to Cart</button><button class="ghost" onclick="closeM()">Close</button></div>`)}
+
+function compare(){
+ if(S.cmp.length<2){toast('Pick at least 2 products using ⚖ Compare');return}
+ const L=S.cmp.map(i=>P.find(x=>x.id==i));
+ modal(`<h3>Compare products</h3><table><tr><td></td>${L.map(p=>`<th>${p.e}<br>${p.n}</th>`).join('')}</tr>
+ <tr><td>Price</td>${L.map(p=>`<td><b>${inr(sale(p))}</b></td>`).join('')}</tr>
+ <tr><td>MRP</td>${L.map(p=>`<td>${inr(p.p)}</td>`).join('')}</tr>
+ <tr><td>Discount</td>${L.map(p=>`<td>${p.d}%</td>`).join('')}</tr>
+ <tr><td>Rating</td>${L.map(p=>`<td>⭐ ${p.r}</td>`).join('')}</tr>
+ <tr><td>Category</td>${L.map(p=>`<td>${p.c}</td>`).join('')}</tr>
+ <tr><td>Units sold</td>${L.map(p=>`<td>${p.s}</td>`).join('')}</tr></table>
+ <div class="row"><button class="ghost" onclick="S.cmp=[];render();closeM()">Clear</button><button onclick="closeM()">Close</button></div>`)}
+
+function offers(){
+ const O=[['⚡','Flash sale','35% off Power Bank',null],['🛍','Cyber Monday sale','20–30% off selected products',null],['🎮','Bundle offer','Buy 2 Gaming items, get extra 10% off',null],
+  ['🎟','CYBER20','20% off, max ₹1,000 (min ₹500)','CYBER20'],['🆕','FIRST200','₹200 off orders above ₹1,999','FIRST200'],['🚚','Free delivery','On orders above ₹999',null],
+  ['⭐','Loyalty points','Earn 5% back as points, redeem 1 pt = ₹1',null],['🎡','Spin to win','Win SPIN5, SPIN10, SPIN100 or FREEDEL daily',null]];
+ modal(`<h3>🎁 Today's offers</h3>${O.map(o=>`<div class="offer"><span>${o[0]} <b>${o[1]}</b><br>${o[2]}</span>${o[3]?`<button onclick="setCoupon('${o[3]}')">Apply</button>`:''}</div>`).join('')}
+ <p class="cat">Offers are sample project data. Discounts are applied in a fixed order so nothing is counted twice.</p><button onclick="closeM()">Close</button>`)}
+
+function wheel(){
+ const today=new Date().toDateString(),done=S.spun==today;
+ modal(`<h3>🎡 Spin to win</h3><p class="cat">One spin per day. Prizes unlock a coupon code or bonus points.</p>
+ <div class="wrap"><div class="ptr">▼</div><div class="wheel" id="wh">${PRIZES.map((p,i)=>`<span style="transform:rotate(${i*60+30}deg) translateY(-86px)">${p.l}</span>`).join('')}</div></div>
+ <div class="msg ok" id="spres">${done?'You already spun today. Come back tomorrow!':''}</div>
+ <div class="row"><button id="spb" onclick="spin()" ${done?'disabled':''}>SPIN</button><button class="ghost" onclick="closeM()">Close</button></div>`)}
+function spin(){
+ const i=Math.random()*PRIZES.length|0,pr=PRIZES[i];S.spun=new Date().toDateString();$('spb').disabled=true;
+ $('wh').style.transform=`rotate(${1800+360-(i*60+30)}deg)`;
+ setTimeout(()=>{let m;
+  if(pr.c){S.unlocked.push(pr.c);m=`🎉 You won ${pr.l}! Code ${pr.c} unlocked.`;$('spres').innerHTML=m+` <button style="padding:4px 10px" onclick="setCoupon('${pr.c}')">Use now</button>`}
+  else if(pr.pts){S.pts+=pr.pts;$('spres').textContent=`🎉 +${pr.pts} loyalty points added!`}
+  else $('spres').textContent='So close! Try again tomorrow.';
+  render()},4100)}
+
+/* ---------- Payments (all simulated) ---------- */
+function openPay(){
+ if(!Object.keys(S.cart).length){$('cmsg').textContent='Add something to your cart first';$('cmsg').className='msg err';return}
+ if(!S.addr){addrForm(true);return}
+ modal(`<h3>Checkout</h3><p class="cat">📍 Deliver to <b>${esc(S.addr.name)}</b>, ${esc(S.addr.line)}, ${esc(S.addr.city)} - ${esc(S.addr.pin)} <a href="#" style="color:var(--ac2)" onclick="addrForm(true);return false">Change</a></p><p>Amount payable: <b class="price" id="amt"></b></p><div class="pay" id="pm"></div><div id="pf"></div>
+ <div class="msg err" id="perr"></div>
+ <div class="row"><button id="pb" onclick="pay(true)">Pay now</button><button class="ghost" onclick="pay(false)">Simulate failure</button></div>
+ <p class="cat">Demo mode: nothing is charged and card details are never stored or sent anywhere.</p>`);setM(method)}
+function setM(m){method=m;$('pm').innerHTML=['UPI','Card','Net Banking','Wallet','Cash on Delivery'].map(x=>`<button class="ghost ${x==m?'on':''}" onclick="setM('${x}')">${{UPI:'📱 ',Card:'💳 ','Net Banking':'🏦 ',Wallet:'👛 ','Cash on Delivery':'💵 '}[x]}${x}</button>`).join('');
+ $('amt').textContent=inr(fin());$('perr').textContent='';payForm()}
+function payForm(){
+ const f=$('pf');
+ if(method=='UPI')f.innerHTML=`<div class="apps">${['GPay','PhonePe','BHIM','Paytm'].map(a=>`<button class="ghost ${a==upiApp?'on':''}" onclick="upiApp='${a}';payForm()">${a}</button>`).join('')}</div><input id="upi" placeholder="yourname@bank (UPI ID)">`;
+ else if(method=='Card')f.innerHTML=`<input id="cn" inputmode="numeric" autocomplete="off" placeholder="Card number (demo: 4242 4242 4242 4242)" oninput="this.value=this.value.replace(/\\D/g,'').slice(0,19).replace(/(.{4})/g,'$1 ').trim()">
+  <input id="cname" autocomplete="off" placeholder="Name on card"><div style="display:flex;gap:8px"><input id="cexp" placeholder="MM/YY" maxlength="5" oninput="this.value=this.value.replace(/[^\\d\\/]/g,'')"><input id="ccv" type="password" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="CVV"></div>`;
+ else if(method=='Net Banking')f.innerHTML=`<select id="bank"><option value="">Select your bank</option>${BANKS.map(b=>`<option>${b}</option>`).join('')}</select>`;
+ else if(method=='Wallet')f.innerHTML=`<p>CyberWallet balance: <b>${inr(S.wallet)}</b> <span class="cat">(demo money)</span></p>`;
+ else f.innerHTML=`<p class="cat">Pay in cash on delivery. A ₹30 handling fee is added.</p>`}
+function luhn(s){let t=0,d=false;for(let i=s.length-1;i>=0;i--){let n=+s[i];if(d){n*=2;if(n>9)n-=9}t+=n;d=!d}return t%10==0}
+function validate(){
+ if(method=='UPI')return /^[\w.\-]{2,}@[a-zA-Z]{2,}$/.test($('upi').value.trim())?'':'Enter a valid UPI ID like name@bank';
+ if(method=='Card'){const n=$('cn').value.replace(/\s/g,''),e=$('cexp').value,m=/^(0[1-9]|1[0-2])\/(\d{2})$/.exec(e);
+  if(!/^\d{13,19}$/.test(n)||!luhn(n))return 'Invalid card number';
+  if(!$('cname').value.trim())return 'Enter the name on the card';
+  if(!m||new Date(2000+ +m[2],+m[1],0,23,59)<new Date())return 'Invalid or expired date';
+  return /^\d{3,4}$/.test($('ccv').value)?'':'Invalid CVV'}
+ if(method=='Net Banking')return $('bank').value?'':'Please select a bank';
+ if(method=='Wallet')return S.wallet>=fin()?'':'Insufficient wallet balance';
+ return ''}
+function pay(ok){
+ if(!ok){modal(`<h3>❌ Payment failed</h3><p>Your cart is safe. Please try another method.</p><button onclick="openPay()">Try again</button>`);return}
+ const e=validate();if(e){$('perr').textContent=e;return}
+ $('pb').textContent='Processing…';$('pb').disabled=true;setTimeout(done,1200)}
+function done(){
+ const t=totals(),amt=fin(),id='CC'+Date.now().toString().slice(-8);
+ if(method=='Wallet')S.wallet-=amt;
+ const earned=Math.floor(t.total*.05);
+ S.pts=S.pts-t.pts+earned;S.use=false;
+ if(t.ok&&S.coupon)S.used[S.coupon]=(S.used[S.coupon]||0)+1;
+ S.orders.unshift({id,ts:Date.now(),total:amt,method,addr:S.addr,lines:Object.keys(S.cart).map(i=>({id:+i,q:S.cart[i]})),items:Object.keys(S.cart).map(i=>P.find(x=>x.id==i).n+' ×'+S.cart[i]).join(', ')});
+ S.cart={};S.coupon='';$('cpn').value='';render();openCart(false);
+ modal(`<h3>✅ Order confirmed!</h3><p>Order <b>${id}</b> paid via ${method}.</p><p>Total: <b class="price">${inr(amt)}</b></p>
+ <p class="best">⭐ You earned ${earned} loyalty points!</p><div class="row"><button onclick="showOrders()">Track order</button><button class="ghost" onclick="closeM()">Continue shopping</button></div>`)}
+
+function ordHTML(L){
+ return (L||S.orders).map(o=>{const el=(Date.now()-o.ts)/1000,cur=STAGE_AT.filter(t=>el>=t).length-1;
+  return`<div class="ord"><b>${o.id}</b> • ${inr(o.total)} • ${o.method}<br><span class="cat">${o.items}</span>${o.addr?`<br><span class="cat">📍 ${esc(o.addr.line)}, ${esc(o.addr.city)} - ${esc(o.addr.pin)} • ETA ${eta()}</span>`:''}
+  <div class="tl">${STAGES.map((s,i)=>`<div class="${i<=cur?'d':''}"><i></i>${s}</div>`).join('')}</div></div>`}).join('')||'<div class="empty">No orders yet</div>'}
+function showOrders(){
+ modal(`<h3>📦 My orders</h3><p class="cat">Demo tracking moves through stages every few seconds.</p><div id="otl">${ordHTML()}</div><button onclick="closeM()">Close</button>`);
+ clearInterval(ordT);ordT=setInterval(()=>{if($('otl'))$('otl').innerHTML=ordHTML();else clearInterval(ordT)},2000)}
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const eta=()=>new Date(Date.now()+4*864e5).toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+const hms=s=>[s/3600|0,s/60%60|0,s%60].map(x=>String(x).padStart(2,'0')).join(':');
+const DEMO={id:'CC10000001',ts:Date.now()-5000,total:3299,method:'UPI',items:'Wireless Headphones ×1',addr:{line:'12 Sample Street',city:'Greater Noida',pin:'201310'}};
+let tk=null;
+if(!S.fend||S.fend<Date.now())S.fend=Date.now()+3*36e5;
+
+/* Flash sale with its own countdown (restarts every 3 hours for the demo) */
+function tickF(){if(S.fend<Date.now()){S.fend=Date.now()+3*36e5;save()}const e=$('fcd');if(e)e.textContent=hms(Math.max(0,(S.fend-Date.now())/1e3|0))}
+setInterval(tickF,1000);
+function flashR(){
+ $('flash').innerHTML=`<div class="fhead"><div><h2>⚡ Flash Sale</h2><div class="cat">Limited stock, big discounts</div></div><div>Ends in <span id="fcd" class="fcd">--:--:--</span></div></div>
+ <div class="fgrid">${P.filter(p=>p.f).map(p=>{const pc=Math.min(96,55+p.s%40);return`<div class="fcard"><span style="font-size:36px">${p.e}</span><div style="flex:1"><b>${p.n}</b>
+ <div><span class="price">${inr(sale(p))}</span><span class="old">${inr(p.p)}</span> <span class="badge" style="position:static">−${p.d}%</span></div>
+ <div class="cat">${pc}% claimed • only ${Math.max(2,Math.round(p.s*(100-pc)/300))} left</div><progress max="100" value="${pc}" style="width:100%"></progress></div><button onclick="add(${p.id})">Add</button></div>`}).join('')}</div>`;tickF()}
+
+/* Coupon vault */
+function couponStatus(k,c){
+ if(c.exp&&new Date(c.exp+'T23:59:59')<new Date())return['Expired','err'];
+ if(c.lim&&(S.used[k]||0)>=c.lim)return['Limit reached','err'];
+ if(c.spin&&!S.unlocked.includes(k))return['🔒 Spin the wheel to unlock','cat'];
+ return['✔ Active','ok']}
+function vault(){
+ $('vault').innerHTML=Object.entries(COUPONS).map(([k,c])=>{const[t,cl]=couponStatus(k,c);
+  return`<div class="cpn"><b>${k}</b><div class="cat">${c.d}</div><div class="${cl}" style="font-size:12px;margin-top:4px">${t}${c.lim?` • used ${S.used[k]||0}/${c.lim}`:''}${c.exp?` • till ${c.exp}`:''}</div>
+  <div class="row"><button onclick="setCoupon('${k}')">Apply</button><button class="ghost" onclick="copyC('${k}')">Copy</button></div></div>`}).join('')}
+function copyC(k){try{navigator.clipboard.writeText(k)}catch(e){}toast('Code '+k+' copied')}
+
+/* Address */
+function pill(){$('addrpill').textContent=S.addr?'📍 '+S.addr.city+' '+S.addr.pin:'📍 Add address'}
+function addrForm(go){const a=S.addr||{};
+ modal(`<h3>📍 Delivery address</h3>
+ <input id="an" placeholder="Full name" maxlength="40" value="${esc(a.name||'')}"><input id="ap" inputmode="numeric" placeholder="Mobile number (10 digits)" maxlength="10" value="${esc(a.phone||'')}">
+ <input id="az" inputmode="numeric" placeholder="PIN code (6 digits)" maxlength="6" value="${esc(a.pin||'')}"><input id="al" placeholder="House no., street, area" maxlength="80" value="${esc(a.line||'')}">
+ <input id="ay" placeholder="City" maxlength="30" value="${esc(a.city||'')}"><input id="as" placeholder="State" maxlength="30" value="${esc(a.state||'')}">
+ <select id="at"><option>Home</option><option ${a.type=='Work'?'selected':''}>Work</option></select>
+ <div class="msg err" id="aerr"></div><div class="row"><button onclick="saveAddr(${!!go})">${go?'Save & continue':'Save address'}</button><button class="ghost" onclick="closeM()">Cancel</button></div>`)}
+function saveAddr(go){
+ const a={name:$('an').value.trim(),phone:$('ap').value.trim(),pin:$('az').value.trim(),line:$('al').value.trim(),city:$('ay').value.trim(),state:$('as').value.trim(),type:$('at').value};
+ const e=a.name.length<2?'Enter your full name':!/^[6-9]\d{9}$/.test(a.phone)?'Enter a valid 10-digit mobile number':!/^\d{6}$/.test(a.pin)?'Enter a valid 6-digit PIN code':a.line.length<5?'Enter your street address':!a.city?'Enter your city':!a.state?'Enter your state':'';
+ if(e){$('aerr').textContent=e;return}
+ S.addr=a;save();pill();if(go)openPay();else{closeM();toast('Address saved')}}
+
+/* Reviews */
+function revList(pid,max){
+ return S.reviews.filter(r=>!pid||r.pid==pid).slice(0,max).map(r=>`<div class="offer"><span><b>${esc(r.name)}</b> ${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}${r.v?' <span class="best">✔ Verified buyer</span>':''}<br>${esc(r.text)}<br><span class="cat">${P.find(x=>x.id==r.pid).n} • ${r.date}</span></span></div>`).join('')||'<div class="empty">No reviews yet for this product</div>'}
+function revSec(){
+ const n=S.reviews.length,avg=(S.reviews.reduce((a,r)=>a+r.stars,0)/n).toFixed(1);
+ $('reviews').innerHTML=`<div class="panel rvgrid"><div><div class="avg">${avg}<small>/5</small></div><div class="best">${'★'.repeat(Math.round(avg))}${'☆'.repeat(5-Math.round(avg))}</div><div class="cat">${n} reviews</div>
+ ${[5,4,3,2,1].map(k=>{const c=S.reviews.filter(r=>r.stars==k).length;return`<div class="rrow"><span>${k}★</span><progress max="${n}" value="${c}"></progress><span>${c}</span></div>`}).join('')}</div>
+ <div><h3>Write a review</h3><select id="rvp">${P.map(p=>`<option value="${p.id}">${p.n}</option>`).join('')}</select><input id="rvn" placeholder="Your name" maxlength="30">
+ <select id="rvs">${[5,4,3,2,1].map(k=>`<option value="${k}">${'★'.repeat(k)} (${k})</option>`).join('')}</select><input id="rvt" placeholder="Share your experience" maxlength="140">
+ <button style="margin-top:10px" onclick="addReview()">Submit review</button></div></div><div class="panel" id="rvl">${revList(0,6)}</div>`}
+function addReview(){
+ const name=$('rvn').value.trim(),text=$('rvt').value.trim(),pid=+$('rvp').value;
+ if(name.length<2||text.length<5){toast('Please enter your name and a short review');return}
+ const v=S.orders.some(o=>(o.lines||[]).some(l=>l.id==pid));
+ S.reviews.unshift({pid,name,stars:+$('rvs').value,text,date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short'}),v:v?1:0});
+ S.reviews=S.reviews.slice(0,40);save();revSec();toast('Thanks for your review!')}
+
+/* Order tracking by ID */
+function trackOrder(){
+ const id=$('tid').value.trim().toUpperCase(),o=id==DEMO.id?DEMO:S.orders.find(x=>x.id==id);
+ if(!o){tk=null;$('tres').innerHTML='<div class="msg err">No order found with that ID.</div>';return}
+ tk=o;$('tres').innerHTML=ordHTML([o])}
+setInterval(()=>{if(tk&&$('tres'))$('tres').innerHTML=ordHTML([tk])},2000);
+
+/* Sales dashboard (sample data + orders placed here) */
+function dash(){
+ let rev=0,units=0,orders=412,cp=128;const cat={},prod={},pay={UPI:48,Card:27,'Net Banking':9,Wallet:6,'Cash on Delivery':10};
+ P.forEach(p=>{rev+=p.s*sale(p);units+=p.s;cat[p.c]=(cat[p.c]||0)+p.s*sale(p);prod[p.n]=p.s});
+ S.orders.forEach(o=>{rev+=o.total;orders++;pay[o.method]=(pay[o.method]||0)+1;(o.lines||[]).forEach(l=>{const p=P.find(x=>x.id==l.id);units+=l.q;cat[p.c]=(cat[p.c]||0)+sale(p)*l.q;prod[p.n]=(prod[p.n]||0)+l.q})});
+ for(const k in S.used)cp+=S.used[k];
+ const dl=[],dv=[18200,24500,21800,30100,27400,35900,41800].map((v,i)=>{const d=new Date(Date.now()-(6-i)*864e5);dl.push(d.toLocaleDateString('en-IN',{weekday:'short'}));return v+S.orders.filter(o=>new Date(o.ts).toDateString()==d.toDateString()).reduce((a,o)=>a+o.total,0)});
+ const mx=Math.max(...dv),ce=Object.entries(cat).sort((a,b)=>b[1]-a[1]),ct=ce.reduce((a,x)=>a+x[1],0),cols=['var(--ac)','var(--bd)','var(--ac2)','#22C55E'];
+ let acc=0;const stops=ce.map((x,i)=>{const a=acc;acc+=x[1]/ct*100;return`${cols[i%4]} ${a}% ${acc}%`}).join(',');
+ const tp=Object.entries(prod).sort((a,b)=>b[1]-a[1]).slice(0,5),pm=Object.entries(pay),pt=pm.reduce((a,x)=>a+x[1],0);
+ $('kpis').innerHTML=[['Revenue',inr(rev)],['Orders',orders],['Units sold',units],['Avg order value',inr(rev/orders)],['Coupons used',cp]].map(k=>`<div class="kpi"><span class="cat">${k[0]}</span><b>${k[1]}</b></div>`).join('');
+ $('dgrid').innerHTML=`<div class="panel"><h3>Revenue – last 7 days</h3><div class="bars">${dv.map((v,i)=>`<div class="col"><span class="cat">${(v/1000).toFixed(1)}k</span><u><i style="height:${v/mx*100}%"></i></u><span class="cat">${dl[i]}</span></div>`).join('')}</div></div>
+ <div class="panel"><h3>Sales by category</h3><div class="donut" style="background:conic-gradient(${stops})"></div>${ce.map((x,i)=>`<div class="hb"><span style="color:${cols[i%4]}">●</span> ${x[0]} – ${Math.round(x[1]/ct*100)}%</div>`).join('')}</div>
+ <div class="panel"><h3>Top selling products</h3>${tp.map(x=>`<div class="hb">${x[0]} <b>${x[1]}</b> units<div style="width:${x[1]/tp[0][1]*100}%"></div></div>`).join('')}</div>
+ <div class="panel"><h3>Payment methods</h3>${pm.map(x=>`<div class="hb">${x[0]} – ${Math.round(x[1]/pt*100)}%<div style="width:${x[1]/pt*100}%;background:var(--bd)"></div></div>`).join('')}</div>`}
+revSec();
+render();
+</script>
+</body>
+</html>
